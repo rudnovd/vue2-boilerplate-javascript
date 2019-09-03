@@ -1,14 +1,12 @@
 <template>
   <body>
-    <div class='grid'>
-      <Header/>
+    <Header/>
 
-      <main>
-        <router-view :key='$route.fullPath'/>
-      </main>
+    <main>
+      <router-view :key='$route.fullPath'/>
+    </main>
 
-      <Footer/>
-    </div>
+    <Footer/>
   </body>
 </template>
 
