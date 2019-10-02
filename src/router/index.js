@@ -12,7 +12,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: () => import(/* webpackChunkName: 'home' */ '@/router/pages/Home'),
+      component: () => import(/* webpackChunkName: 'home' */ '@/views/Home'),
       meta: {
         title: 'Home',
         authenticationRequired: false,
@@ -21,7 +21,7 @@ const router = new Router({
     },
     {
       path: '/objects/:id',
-      component: () => import(/* webpackChunkName: 'object' */ '@/router/pages/Object'),
+      component: () => import(/* webpackChunkName: 'object' */ '@/views/Object'),
       meta: {
         title: 'Object',
         authenticationRequired: false,
@@ -31,7 +31,7 @@ const router = new Router({
         {
           // if path /objects/:id/info
           path: 'info',
-          component: import(/* webpackChunkName: 'objectInfo' */ '@/router/pages/ObjectInfo'),
+          component: import(/* webpackChunkName: 'objectInfo' */ '@/views/ObjectInfo'),
           meta: {
             title: 'Object info',
             authenticationRequired: false,
@@ -44,7 +44,7 @@ const router = new Router({
     // Admin routes
     {
       path: '/admin/objects/',
-      component: () => import(/* webpackChunkName: 'admin/objects' */ '@/router/pages/admin/Objects'),
+      component: () => import(/* webpackChunkName: 'admin/objects' */ '@/views/admin/Objects'),
       meta: {
         title: 'Objects',
         authenticationRequired: true,
@@ -55,7 +55,7 @@ const router = new Router({
     // Error page
     {
       path: '*',
-      component: () => import(/* webpackChunkName: 'error' */ '@/router/pages/Error.vue'),
+      component: () => import(/* webpackChunkName: 'error' */ '@/views/Error.vue'),
       meta: {
         title: 'Error',
         authenticationRequired: false,
