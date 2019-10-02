@@ -3,14 +3,18 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: `@import "~@/css/_variables.scss";`
+        data: `
+          @import "~@/scss/mixins/main";
+          @import "~@/scss/placeholders/main";
+          @import "~@/scss/variables/main";
+        `
       }
     }
   },
   devServer: {
     proxy: {
       '^/api': {
-        target: 'http://localhost:5000/'
+        target: `${process.env.VUE_APP_API_URL}:${process.env.VUE_APP_API_PORT}`
       }
     }
   },
