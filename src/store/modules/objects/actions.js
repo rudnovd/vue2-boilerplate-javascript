@@ -1,45 +1,54 @@
-import * as api from '@/js/api/objects'
+import { Object } from '@/js/api/object'
 
 export default {
   async getObjects ({ commit }) {
-    api.getObjects().then(response => {
-      if (response.status === 200) {
+    commit('LOADING_START')
+    Object.getAll()
+      .then(response => {
         commit('SET_OBJECTS', response.data)
-      } else {
-        return response
-      }
-    })
+      })
+      .catch(error => {
+        commit('SET_ERROR', error.data)
+      })
+      .finally(() => {
+        commit('LOADING_END')
+      })
   },
-  async postObject ({ commit, dispatch }, data) {
-    api.postObject(data).then(response => {
-      if (response.status === 200) {
+  async postObject ({ commit }, data) {
+    commit('LOADING_START')
+    Object.post(data)
+      .then(response => {
         commit('ADD_OBJECT', response.data)
-        /*
-        OR
-        commit('DELETE_OBJECTS')
-        dispatch.getObjects()
-        */
-      } else {
-        return response
-      }
-    })
+      })
+      .catch(error => {
+        commit('SET_ERROR', error.data)
+      })
+      .finally(() => {
+        commit('LOADING_END')
+      })
   },
   async putObject ({ commit }, data) {
-    api.putObject(data).then(response => {
-      if (response.status === 200) {
+    Object.put(data)
+      .then(response => {
         commit('PUT_OBJECT', response.data)
-      } else {
-        return response
-      }
-    })
+      })
+      .catch(error => {
+        commit('SET_ERROR', error.data)
+      })
+      .finally(() => {
+        commit('LOADING_END')
+      })
   },
   async deleteObject ({ commit }, data) {
-    api.deleteObject(data).then(response => {
-      if (response.status === 200) {
+    Object.delete(data)
+      .then(response => {
         commit('DELETE_OBJECT', response.data)
-      } else {
-        return response
-      }
-    })
+      })
+      .catch(error => {
+        commit('SET_ERROR', error.data)
+      })
+      .finally(() => {
+        commit('LOADING_END')
+      })
   }
 }

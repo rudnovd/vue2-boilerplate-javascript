@@ -1,5 +1,4 @@
 import Vue from 'vue'
-
 import Vuex from 'vuex'
 
 import objects from './modules/objects'
@@ -10,5 +9,5 @@ export default new Vuex.Store({
   modules: {
     objects
   },
-  strict: true
+  strict: process.env.NODE_ENV === 'development'
 })

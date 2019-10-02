@@ -1,20 +1,30 @@
 export default {
-  SET_OBJECTS (state, data) {
-    state.objects = data
+  LOADING_START (state) {
+    state.state.isLoading = true
   },
-  ADD_OBJECT (state, data) {
-    state.objects.push(data)
+  LOADING_END (state) {
+    state.state.isLoading = false
   },
-  PUT_OBJECT (state, data) {
-    state.category.forEach((value, index) => {
-      if (value.id === data.id) {
-        state.categoru[index] = data
+  SET_ERROR (state, error) {
+    state.state.error = error
+  },
+
+  SET_OBJECTS (state, objects) {
+    state.objects = objects
+  },
+  ADD_OBJECT (state, object) {
+    state.objects.push(object)
+  },
+  PUT_OBJECT (state, object) {
+    state.objects.forEach(singleObject => {
+      if (singleObject.id === object.id) {
+        singleObject = object
       }
     })
   },
-  DELETE_OBJECT (state, data) {
-    state.category.forEach((value, index) => {
-      if (value.id === data.id) {
+  DELETE_OBJECT (state, object) {
+    state.objects.forEach((singleObject, index) => {
+      if (singleObject.id === object.id) {
         state.category.splice(index, 1)
       }
     })
