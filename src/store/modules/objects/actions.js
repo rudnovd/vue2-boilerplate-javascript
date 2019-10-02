@@ -3,7 +3,7 @@ import { Object } from '@/js/api/object'
 export default {
   async getObjects ({ commit }) {
     commit('LOADING_START')
-    Object.getAll()
+    await Object.getAll()
       .then(response => {
         commit('SET_OBJECTS', response.data)
       })
@@ -16,7 +16,7 @@ export default {
   },
   async postObject ({ commit }, data) {
     commit('LOADING_START')
-    Object.post(data)
+    await Object.post(data)
       .then(response => {
         commit('ADD_OBJECT', response.data)
       })
@@ -28,7 +28,8 @@ export default {
       })
   },
   async putObject ({ commit }, data) {
-    Object.put(data)
+    commit('LOADING_START')
+    await Object.put(data)
       .then(response => {
         commit('PUT_OBJECT', response.data)
       })
@@ -40,7 +41,8 @@ export default {
       })
   },
   async deleteObject ({ commit }, data) {
-    Object.delete(data)
+    commit('LOADING_START')
+    await Object.delete(data)
       .then(response => {
         commit('DELETE_OBJECT', response.data)
       })
