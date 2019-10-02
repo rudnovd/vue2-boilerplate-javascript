@@ -1,0 +1,30 @@
+header {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  
+  nav {
+    display: grid;
+    grid-template-columns: inherit;
+  }
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  min-width: 320px;
+
+  article {
+    display: grid;
+    grid-template-columns: inherit;
+
+    section {
+    }
+  }
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+}
