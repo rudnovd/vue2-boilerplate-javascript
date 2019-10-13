@@ -5,7 +5,9 @@ import store from './store'
 
 import './scss/main.scss'
 
-Vue.config.productionTip = false
+import './globalComponents'
+
+Vue.config.productionTip = process.env.NODE_ENV === 'production'
 
 new Vue({
   router,
