@@ -42,7 +42,7 @@ export function setRouteProps (to, from, next) {
 }
 
 function userLoggedIn () {
-  if (store.getters['user/user'].data.isLoggedIn) {
+  if (store.getters['user/user'].isLoggedIn) {
     return true
   } else {
     return false

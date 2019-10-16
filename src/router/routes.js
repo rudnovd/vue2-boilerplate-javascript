@@ -7,27 +7,27 @@ export default [
     }
   },
   {
-    path: '/objects/',
-    component: () => import(/* webpackChunkName: 'object' */ '@/views/Object'),
+    path: '/objects',
+    component: () => import(/* webpackChunkName: 'object' */ '@/views/Objects'),
     meta: {
-      title: 'Object',
+      title: 'Objects',
       authenticationRequired: true
     }
-    // children: [
-    //   {
-    //     // if path /objects/:id/info
-    //     path: 'info',
-    //     component: import(/* webpackChunkName: 'objectInfo' */ '@/views/ObjectInfo'),
-    //     meta: {
-    //       title: 'Object info',
-    //       authenticationRequired: false
-    //     }
-    //   }
-    // ]
+  },
+  {
+    path: '/objects/:id',
+    component: () => import(/* webpackChunkName: 'object' */ '@/views/SingleObject'),
+    meta: {
+      title: 'Single object',
+      authenticationRequired: true
+    },
+    props: {
+      id: this
+    }
   },
 
   {
-    path: '/admin/objects/',
+    path: '/admin/objects',
     component: () => import(/* webpackChunkName: 'admin/objects' */ '@/views/admin/Objects'),
     meta: {
       title: 'Objects',
