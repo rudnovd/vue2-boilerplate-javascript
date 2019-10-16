@@ -10,23 +10,17 @@ export default {
   },
 
   SET_OBJECTS (state, objects) {
-    state.objects = objects
+    state.data.objects = objects
   },
   ADD_OBJECT (state, object) {
-    state.objects.push(object)
+    state.data.objects.push(object)
   },
   PUT_OBJECT (state, object) {
-    state.objects.forEach(singleObject => {
-      if (singleObject.id === object.id) {
-        singleObject = object
-      }
-    })
+    const objectIndex = state.data.objects.findIndex(singleObject => singleObject._id === object._id)
+    state.data.objects.splice(objectIndex, 1, object)
   },
   DELETE_OBJECT (state, object) {
-    state.objects.forEach((singleObject, index) => {
-      if (singleObject.id === object.id) {
-        state.category.splice(index, 1)
-      }
-    })
+    const objectIndex = state.data.objects.findIndex(singleObject => singleObject._id === object._id)
+    state.data.objects.splice(objectIndex, 1)
   }
 }

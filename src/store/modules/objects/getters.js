@@ -3,6 +3,6 @@ export default {
     return state.state
   },
   objects: state => {
-    return state.objects
+    return state.data.objects
   }
 }

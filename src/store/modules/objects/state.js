@@ -4,5 +4,7 @@ export default {
     method: '',
     error: ''
   },
-  objects: []
+  data: {
+    objects: []
+  }
 }
