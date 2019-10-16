@@ -1,9 +1,9 @@
 <template>
   <div class='loading-spinner'>
-    <span class='spinner'/>
+    <span class='spinner' :style='{ height: size, width: size }'/>
 
-    <div class='text' v-if='loadingText'>
-      <span>{{ loadingText }}</span>
+    <div class='text' v-if='text'>
+      <span :style='{ fontSize: fontSize }'>{{ text }}</span>
       <slot></slot>
     </div>
   </div>
@@ -13,7 +13,17 @@
 export default {
   name: 'loading-spinner',
   props: {
-    loadingText: {
+    size: {
+      value: String,
+      default: '3em',
+      required: false
+    },
+    fontSize: {
+      value: String,
+      default: '1em',
+      required: false
+    },
+    text: {
       value: String,
       default: '',
       required: false
@@ -33,8 +43,6 @@ export default {
     display: block;
     border: 5px solid rgba(map-get($colors, 'green'), 0.2);
     border-top-color: map-get($colors, 'green');
-    width: 3em;
-    height: 3em;
     border-radius: 50%;
     animation: spin 2s linear infinite;
 

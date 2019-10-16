@@ -2,7 +2,7 @@
   <header>
     <nav>
       <router-link to="/">Home</router-link>
-      <router-link to="/">Home</router-link>
+      <router-link to="/objects">Objects</router-link>
     </nav>
 
     <div class='header-content'>

@@ -1,5 +1,5 @@
 <template>
-  <div class='single-object'>
+  <div class='single-object' @click='onClick'>
     {{ text }}
   </div>
 </template>
@@ -10,6 +10,11 @@ export default {
     text: {
       value: String,
       default: ''
+    }
+  },
+  methods: {
+    onClick () {
+      this.$emit('click')
     }
   }
 }
@@ -23,5 +28,6 @@ export default {
   padding: 50px;
   margin-left: 10px;
   margin-right: 10px;
+  cursor: pointer;
 }
 </style>
