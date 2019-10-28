@@ -32,13 +32,11 @@ export function checkRouteAdminRole (to, from, next) {
   }
 }
 
-export function setRouteProps (to, from, next) {
+export function setRouteProps (to, from) {
   const pageTitle = to.matched.find(record => record.meta.title)
   if (pageTitle) {
     document.title = to.meta.title
   }
-
-  next()
 }
 
 function userLoggedIn () {

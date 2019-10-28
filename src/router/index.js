@@ -22,6 +22,7 @@ const router = new Router({
 router.beforeEach(getLogin)
 router.beforeEach(checkRouteAuth)
 router.beforeEach(checkRouteAdminRole)
-router.beforeEach(setRouteProps)
+
+router.afterEach(setRouteProps)
 
 export default router
