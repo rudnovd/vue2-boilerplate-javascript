@@ -1,6 +1,6 @@
-@import './grid';
-
+@import './reset';
 @import './fonts';
+@import './grid';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -8,10 +8,6 @@
 
 html, body {
   min-height: 100vh;
-}
-
-body {
-  margin: 0;
 }
 
 [v-cloak] {
