@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  vue2-boilerplate-javascript:
+    image: vue2-boilerplate-javascript
+    build: .
+    ports:
+      - 8080:8080
