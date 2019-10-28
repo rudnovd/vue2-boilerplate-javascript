@@ -1,4 +1,4 @@
-import { http } from '@/utils/http'
+import { http } from '@/services/http'
 
 export class Object {
   static getAll () { return getAllObjects() }

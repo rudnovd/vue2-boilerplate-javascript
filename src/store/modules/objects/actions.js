@@ -1,4 +1,4 @@
-import { Object } from '@/js/api/object'
+import { Object } from '@/services/api/object'
 
 export default {
   async getObjects ({ commit }) {
