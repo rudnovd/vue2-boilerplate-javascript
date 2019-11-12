@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from "axios";
 
 // Axios config
 export const http = axios.create({
-  baseURL: '/api'
-})
+  baseURL: "/api"
+});

@@ -1,5 +1,5 @@
 <template>
-  <div class='single-object' @click='onClick'>
+  <div class="single-object" @click="onClick">
     {{ text }}
   </div>
 </template>
@@ -9,20 +9,20 @@ export default {
   props: {
     text: {
       value: String,
-      default: ''
+      default: ""
     }
   },
   methods: {
-    onClick () {
-      this.$emit('click')
+    onClick() {
+      this.$emit("click");
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
 .single-object {
-  color: map-get($colors, 'green');
+  color: map-get($colors, "green");
   text-align: center;
   border: 1px solid gray;
   padding: 50px;

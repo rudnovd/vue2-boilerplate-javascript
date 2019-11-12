@@ -1,29 +1,40 @@
 <template>
   <UserLayout>
-    <section class='home'>
+    <section class="home">
+      <section class="technologies">
+        <div class="card">
+          <h3 class="title">Vue-router</h3>
 
-      <section class='technologies'>
-        <div class='card'>
-          <h3 class='title'>Vue-router</h3>
-
-          <div class='content'>
-            <span><router-link to="/">&lt;router-link to="/"&gt;</router-link></span>
-            <span><router-link to="/objects">&lt;router-link to="objects"&gt;</router-link></span>
-            <span><router-link to="/objects/1">&lt;router-link to="objects/1"&gt;</router-link></span>
+          <div class="content">
+            <span>
+              <router-link to="/">
+                router-link to="/"
+              </router-link>
+            </span>
+            <span>
+              <router-link to="/objects">
+                router-link to="objects"
+              </router-link>
+            </span>
+            <span>
+              <router-link to="/objects/1">
+                router-link to="objects/1"
+              </router-link>
+            </span>
           </div>
         </div>
 
-        <div class='card'>
-          <h3 class='title'>Vuex</h3>
-          <div class='content'>
-            <a href='#' @click='showVuex("objects")'>Objects</a>
-            <a href='#' @click='showVuex("user")'>User</a>
+        <div class="card">
+          <h3 class="title">Vuex</h3>
+          <div class="content">
+            <a href="#" @click="showVuex('objects')">Objects</a>
+            <a href="#" @click="showVuex('user')">User</a>
           </div>
         </div>
 
-        <div class='card'>
-          <h3 class='title'>SASS</h3>
-          <div class='content'>
+        <div class="card">
+          <h3 class="title">SASS</h3>
+          <div class="content">
             <span>Variables</span>
             <span>Mixins</span>
             <span>Placeholders</span>
@@ -31,80 +42,83 @@
         </div>
       </section>
 
-      <section class='technologies'>
-        <div class='card'>
-          <h3 class='title'>Unit tests</h3>
-          <div class='content'>
+      <section class="technologies">
+        <div class="card">
+          <h3 class="title">Unit tests</h3>
+          <div class="content">
             <span>Jest</span>
           </div>
         </div>
 
-        <div class='card'>
-          <h3 class='title'>End to end tests</h3>
-          <div class='content'>
+        <div class="card">
+          <h3 class="title">End to end tests</h3>
+          <div class="content">
             <span>Cypress</span>
           </div>
         </div>
 
-        <div class='card'>
-          <h3 class='title'>Eslint style</h3>
-          <div class='content'>
+        <div class="card">
+          <h3 class="title">Eslint style</h3>
+          <div class="content">
             <span>Standard</span>
           </div>
         </div>
       </section>
 
-      <section class='information' v-if='showInformation'>
-        <div class='card'>
-          <div class='object' v-for='(info, index) in information' :key='info.id'>
-            <h4>{{index}}:</h4>
+      <section class="information" v-if="showInformation">
+        <div class="card">
+          <div
+            class="object"
+            v-for="(info, index) in information"
+            :key="info.id"
+          >
+            <h4>{{ index }}:</h4>
             <span>{{ info }} </span>
           </div>
         </div>
       </section>
-
     </section>
   </UserLayout>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-  mounted () {
-    this.getObjects()
+  mounted() {
+    this.getObjects();
   },
-  data () {
+  data() {
     return {
       showInformation: false,
       information: {}
-    }
+    };
   },
   methods: {
     ...mapActions({
-      getObjects: 'objects/getObjects'
+      getObjects: "objects/getObjects"
     }),
-    showVuex (object) {
-      this.showInformation = true
+    showVuex(object) {
+      this.showInformation = true;
 
-      if (object === 'objects') {
+      if (object === "objects") {
         this.information = {
           state: this.$store.state.objects.state,
           data: this.$store.state.objects.data
-        }
-      } else if (object === 'user') {
+        };
+      } else if (object === "user") {
         this.information = {
           state: this.$store.state.user.state,
           data: this.$store.state.user.data
-        }
+        };
       }
     }
   }
-}
+};
 </script>
 
-<style lang='scss' scoped>
-div[class=card] {
+<style lang="scss" scoped>
+div[class="card"] {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -118,7 +132,7 @@ div[class=card] {
   }
 }
 
-section[class=home] {
+section[class="home"] {
   grid-column-start: 1;
   grid-column-end: 19;
   display: flex;
@@ -127,7 +141,7 @@ section[class=home] {
   height: 100%;
   margin-top: 10px;
 
-  section[class=technologies] {
+  section[class="technologies"] {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -140,7 +154,7 @@ section[class=home] {
       margin-bottom: 0;
     }
 
-    div[class=card] {
+    div[class="card"] {
       flex-direction: column;
       flex: 0 1 300px;
       min-height: 200px;
@@ -150,7 +164,7 @@ section[class=home] {
       border-color: rgb(65, 184, 101);
 
       a {
-        color: rgb(255, 255, 255)
+        color: rgb(255, 255, 255);
       }
 
       .title {
@@ -175,13 +189,13 @@ section[class=home] {
   }
 }
 
-section[class=information] {
+section[class="information"] {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 50px;
 
-  div[class=card] {
+  div[class="card"] {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
@@ -192,5 +206,4 @@ section[class=information] {
     padding: 20px;
   }
 }
-
 </style>

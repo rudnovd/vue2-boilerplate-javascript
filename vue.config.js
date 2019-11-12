@@ -13,13 +13,13 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '^/api': {
+      "^/api": {
         target: `${process.env.VUE_APP_API_URL}:${process.env.VUE_APP_API_PORT}`
       }
     }
   },
   chainWebpack: config => {
     // Disable prefetch scripts
-    config.plugins.delete('prefetch')
+    config.plugins.delete("prefetch");
   }
-}
+};

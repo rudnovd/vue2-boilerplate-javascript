@@ -1,21 +1,21 @@
 <template>
   <BaseLayout>
-    <Header/>
+    <Header />
 
     <main>
-      <transition name='fade'>
+      <transition name="fade">
         <slot></slot>
       </transition>
     </main>
 
-    <Footer/>
+    <Footer />
   </BaseLayout>
 </template>
 
 <script>
-import BaseLayout from '@/layouts/BaseLayout'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import BaseLayout from "@/layouts/BaseLayout";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default {
   components: {
@@ -23,7 +23,7 @@ export default {
     Footer,
     Header
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -31,7 +31,8 @@ main {
   min-height: 90vh;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 2.5s;
 }
 

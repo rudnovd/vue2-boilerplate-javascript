@@ -1,10 +1,10 @@
 export default {
-  async getLogin ({ state, commit }) {
+  async getLogin({ state, commit }) {
     if (!state.isLoggedIn) {
-      commit('SET_USER', {
+      commit("SET_USER", {
         id: 1,
-        username: 'username'
-      })
+        username: "username"
+      });
       // commit('LOADING_START')
       // await getLogin()
       //   .then(response => {
@@ -20,8 +20,8 @@ export default {
       //   })
     }
   },
-  async getLogout ({ commit }) {
-    commit('DELETE_USER')
+  async getLogout({ commit }) {
+    commit("DELETE_USER");
     // commit('LOADING_START')
     // await getLogout()
     //   .then(() => {
@@ -34,7 +34,7 @@ export default {
     //     commit('LOADING_END')
     //   })
   },
-  setUser ({ commit }, user) {
-    commit('SET_USER', user)
+  setUser({ commit }, user) {
+    commit("SET_USER", user);
   }
-}
+};

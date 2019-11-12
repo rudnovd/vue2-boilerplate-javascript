@@ -1,9 +1,9 @@
 <template>
-  <div class='loading-spinner'>
-    <span class='spinner' :style='{ height: size, width: size }'/>
+  <div class="loading-spinner">
+    <span class="spinner" :style="{ height: size, width: size }" />
 
-    <div class='text' v-if='text'>
-      <span :style='{ fontSize: fontSize }'>{{ text }}</span>
+    <div class="text" v-if="text">
+      <span :style="{ fontSize: fontSize }">{{ text }}</span>
       <slot></slot>
     </div>
   </div>
@@ -11,25 +11,25 @@
 
 <script>
 export default {
-  name: 'loading-spinner',
+  name: "loading-spinner",
   props: {
     size: {
       value: String,
-      default: '3em',
+      default: "3em",
       required: false
     },
     fontSize: {
       value: String,
-      default: '1em',
+      default: "1em",
       required: false
     },
     text: {
       value: String,
-      default: '',
+      default: "",
       required: false
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -41,8 +41,8 @@ export default {
 
   .spinner {
     display: block;
-    border: 5px solid rgba(map-get($colors, 'green'), 0.2);
-    border-top-color: map-get($colors, 'green');
+    border: 5px solid rgba(map-get($colors, "green"), 0.2);
+    border-top-color: map-get($colors, "green");
     border-radius: 50%;
     animation: spin 2s linear infinite;
 
@@ -58,5 +58,4 @@ export default {
     margin-top: 5px;
   }
 }
-
 </style>

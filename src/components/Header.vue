@@ -5,7 +5,7 @@
       <router-link to="/objects">Objects</router-link>
     </nav>
 
-    <div class='header-content'>
+    <div class="header-content">
       Header
     </div>
   </header>

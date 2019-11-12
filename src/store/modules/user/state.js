@@ -1,12 +1,12 @@
 export default {
   state: {
     isLoading: false,
-    error: ''
+    error: ""
   },
   data: {
-    id: '',
+    id: "",
     isLoggedIn: false,
-    role: '',
-    username: ''
+    role: "",
+    username: ""
   }
-}
+};

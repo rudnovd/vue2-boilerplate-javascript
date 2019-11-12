@@ -1,41 +1,29 @@
 <template>
-  <div class='component'>
-  </div>
+  <div class="component"></div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  beforeCreate () {
-  },
-  created () {
-  },
-  beforeMount () {
-  },
-  mounted () {
-  },
-  beforeUpdate () {
-  },
-  updated () {
-  },
-  activated () {
-  },
-  deactivated () {
-  },
-  beforeDestroy () {
-  },
-  destroyed () {
-  },
-  data () {
-    return {
-    }
+  beforeCreate() {},
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  activated() {},
+  deactivated() {},
+  beforeDestroy() {},
+  destroyed() {},
+  data() {
+    return {};
   },
   props: {
     prop1: {
       value: String,
       required: true,
-      default: ''
+      default: ""
     },
     prop2: {
       value: Object,
@@ -44,16 +32,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-    })
+    ...mapGetters({})
   },
   methods: {
-    ...mapActions({
-    })
+    ...mapActions({})
   },
-  watch: {
-  }
-}
+  watch: {}
+};
 </script>
 
 <style scoped lang="scss">

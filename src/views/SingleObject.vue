@@ -1,13 +1,13 @@
 <template>
   <UserLayout>
-    <section class='single-object'>
+    <section class="single-object">
       <span>Object {{ $route.params.id }}</span>
     </section>
   </UserLayout>
 </template>
 
 <style scoped lang="scss">
-section[class=single-object] {
+section[class="single-object"] {
   display: flex;
   flex-direction: column;
   justify-items: center;
