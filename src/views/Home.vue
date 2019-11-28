@@ -58,20 +58,18 @@
         </div>
 
         <div class="card">
-          <h3 class="title">Eslint style</h3>
+          <h3 class="title">Eslint rules</h3>
           <div class="content">
-            <span>Standard</span>
+            <span>
+              ['plugin:vue/essential', 'plugin:vue/strongly-recommended', 'plugin:vue/recommended', '@vue/prettier']
+            </span>
           </div>
         </div>
       </section>
 
-      <section class="information" v-if="showInformation">
+      <section v-if="showInformation" class="information">
         <div class="card">
-          <div
-            class="object"
-            v-for="(info, index) in information"
-            :key="info.id"
-          >
+          <div v-for="(info, index) in information" :key="info.id" class="object">
             <h4>{{ index }}:</h4>
             <span>{{ info }} </span>
           </div>
@@ -82,79 +80,73 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+  import { mapActions } from 'vuex'
 
-export default {
-  mounted() {
-    this.getObjects();
-  },
-  data() {
-    return {
-      showInformation: false,
-      information: {}
-    };
-  },
-  methods: {
-    ...mapActions({
-      getObjects: "objects/getObjects"
-    }),
-    showVuex(object) {
-      this.showInformation = true;
+  export default {
+    data() {
+      return {
+        showInformation: false,
+        information: {}
+      }
+    },
+    mounted() {
+      this.getObjects()
+    },
+    methods: {
+      ...mapActions({
+        getObjects: 'objects/getObjects'
+      }),
+      showVuex(object) {
+        this.showInformation = true
 
-      if (object === "objects") {
-        this.information = {
-          state: this.$store.state.objects.state,
-          data: this.$store.state.objects.data
-        };
-      } else if (object === "user") {
-        this.information = {
-          state: this.$store.state.user.state,
-          data: this.$store.state.user.data
-        };
+        if (object === 'objects') {
+          this.information = {
+            state: this.$store.state.objects.state,
+            data: this.$store.state.objects.data
+          }
+        } else if (object === 'user') {
+          this.information = {
+            state: this.$store.state.user.state,
+            data: this.$store.state.user.data
+          }
+        }
       }
     }
   }
-};
 </script>
 
-<style lang="scss" scoped>
-div[class="card"] {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-
-  * {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-}
-
-section[class="home"] {
-  grid-column-start: 1;
-  grid-column-end: 19;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  margin-top: 10px;
-
-  section[class="technologies"] {
+<style lang="scss">
+  section[class='home'] {
+    grid-column-start: 1;
+    grid-column-end: 19;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    min-height: 200px;
-    margin-bottom: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    margin-top: 10px;
+
+    section[class='technologies'] {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      min-height: 200px;
+      margin-bottom: 10px;
+    }
+
+    section[class='information'] {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
 
     h3 {
       margin-top: 10px;
       margin-bottom: 0;
     }
 
-    div[class="card"] {
+    .card {
       flex-direction: column;
       flex: 0 1 300px;
       min-height: 200px;
@@ -162,6 +154,17 @@ section[class="home"] {
       color: #fff;
       background-color: rgb(65, 184, 101);
       border-color: rgb(65, 184, 101);
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+
+      * {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
 
       a {
         color: rgb(255, 255, 255);
@@ -169,6 +172,7 @@ section[class="home"] {
 
       .title {
         border-bottom: 2px solid white;
+        padding-bottom: 5px;
       }
 
       .content {
@@ -187,23 +191,4 @@ section[class="home"] {
       }
     }
   }
-}
-
-section[class="information"] {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 50px;
-
-  div[class="card"] {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    flex: 0 1 940px;
-    min-height: 300px;
-    color: #fff;
-    background-color: rgb(0, 68, 255);
-    padding: 20px;
-  }
-}
 </style>

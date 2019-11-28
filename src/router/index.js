@@ -1,33 +1,28 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-import routes from "./routes";
-import {
-  getLogin,
-  checkRouteAuth,
-  checkRouteAdminRole,
-  setRouteProps
-} from "./middlewares";
+import routes from './routes'
+import { getLogin, checkRouteAuth, checkRouteAdminRole, setRouteProps } from './middlewares'
 
-Vue.use(Router);
+Vue.use(Router)
 
 const router = new Router({
-  mode: "history",
-  base: "/",
+  mode: 'history',
+  base: '/',
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     } else {
-      return { x: 0, y: 0 };
+      return { x: 0, y: 0 }
     }
   },
   routes
-});
+})
 
-router.beforeEach(getLogin);
-router.beforeEach(checkRouteAuth);
-router.beforeEach(checkRouteAdminRole);
+router.beforeEach(getLogin)
+router.beforeEach(checkRouteAuth)
+router.beforeEach(checkRouteAdminRole)
 
-router.afterEach(setRouteProps);
+router.afterEach(setRouteProps)
 
-export default router;
+export default router

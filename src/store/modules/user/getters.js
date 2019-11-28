@@ -1,8 +1,8 @@
 export default {
   state: state => {
-    return state.state;
+    return state.state
   },
   user: state => {
-    return state.data;
+    return state.data
   }
-};
+}

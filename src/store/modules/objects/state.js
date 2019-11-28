@@ -1,10 +1,10 @@
 export default {
   state: {
     isLoading: false,
-    method: "",
-    error: ""
+    method: '',
+    error: ''
   },
   data: {
     objects: []
   }
-};
+}
