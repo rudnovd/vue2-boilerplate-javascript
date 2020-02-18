@@ -80,115 +80,115 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
-  export default {
-    data() {
-      return {
-        showInformation: false,
-        information: {}
-      }
-    },
-    mounted() {
-      this.getObjects()
-    },
-    methods: {
-      ...mapActions({
-        getObjects: 'objects/getObjects'
-      }),
-      showVuex(object) {
-        this.showInformation = true
+export default {
+  data() {
+    return {
+      showInformation: false,
+      information: {}
+    }
+  },
+  mounted() {
+    this.getObjects()
+  },
+  methods: {
+    ...mapActions({
+      getObjects: 'objects/getObjects'
+    }),
+    showVuex(object) {
+      this.showInformation = true
 
-        if (object === 'objects') {
-          this.information = {
-            state: this.$store.state.objects.state,
-            data: this.$store.state.objects.data
-          }
-        } else if (object === 'user') {
-          this.information = {
-            state: this.$store.state.user.state,
-            data: this.$store.state.user.data
-          }
+      if (object === 'objects') {
+        this.information = {
+          state: this.$store.state.objects.state,
+          data: this.$store.state.objects.data
+        }
+      } else if (object === 'user') {
+        this.information = {
+          state: this.$store.state.user.state,
+          data: this.$store.state.user.data
         }
       }
     }
   }
+}
 </script>
 
 <style lang="scss">
-  section[class='home'] {
-    grid-column-start: 1;
-    grid-column-end: 19;
+section[class='home'] {
+  grid-column-start: 1;
+  grid-column-end: 19;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  margin-top: 10px;
+
+  section[class='technologies'] {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 200px;
+    margin-bottom: 10px;
+  }
+
+  section[class='information'] {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  h3 {
     margin-top: 10px;
+    margin-bottom: 0;
+  }
 
-    section[class='technologies'] {
+  .card {
+    flex-direction: column;
+    flex: 0 1 300px;
+    min-height: 200px;
+    max-height: 200px;
+    color: #fff;
+    background-color: rgb(65, 184, 101);
+    border-color: rgb(65, 184, 101);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    * {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    a {
+      color: rgb(255, 255, 255);
+    }
+
+    .title {
+      border-bottom: 2px solid white;
+      padding-bottom: 5px;
+    }
+
+    .content {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-      min-height: 200px;
-      margin-bottom: 10px;
-    }
-
-    section[class='information'] {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 50px;
-    }
-
-    h3 {
-      margin-top: 10px;
-      margin-bottom: 0;
-    }
-
-    .card {
       flex-direction: column;
-      flex: 0 1 300px;
-      min-height: 200px;
-      max-height: 200px;
-      color: #fff;
-      background-color: rgb(65, 184, 101);
-      border-color: rgb(65, 184, 101);
-      display: flex;
       justify-content: center;
-      text-align: center;
-      margin-right: 10px;
-      margin-left: 10px;
-      margin-bottom: 10px;
+      align-items: center;
+      align-content: center;
+      font-size: 1.2em;
+      height: 100%;
 
       * {
         margin-top: 5px;
         margin-bottom: 5px;
       }
-
-      a {
-        color: rgb(255, 255, 255);
-      }
-
-      .title {
-        border-bottom: 2px solid white;
-        padding-bottom: 5px;
-      }
-
-      .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        font-size: 1.2em;
-        height: 100%;
-
-        * {
-          margin-top: 5px;
-          margin-bottom: 5px;
-        }
-      }
     }
   }
+}
 </style>
