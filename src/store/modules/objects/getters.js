@@ -1,8 +1,5 @@
 export default {
-  state: state => {
-    return state.state
-  },
   objects: state => {
-    return state.data.objects
+    return state.objects
   }
 }

@@ -1,26 +1,16 @@
 export default {
-  LOADING_START(state) {
-    state.state.isLoading = true
+  SET_OBJECTS(state, { objects }) {
+    state.objects = objects
   },
-  LOADING_END(state) {
-    state.state.isLoading = false
+  ADD_OBJECT(state, { object }) {
+    state.objects.push(object)
   },
-  SET_ERROR(state, error) {
-    state.state.error = error
+  EDIT_OBJECT(state, { object }) {
+    const objectIndex = state.objects.findIndex(o => o.id === object.id)
+    state.objects.splice(objectIndex, 1, object)
   },
-
-  SET_OBJECTS(state, objects) {
-    state.data.objects = objects
-  },
-  ADD_OBJECT(state, object) {
-    state.data.objects.push(object)
-  },
-  PUT_OBJECT(state, object) {
-    const objectIndex = state.data.objects.findIndex(singleObject => singleObject._id === object._id)
-    state.data.objects.splice(objectIndex, 1, object)
-  },
-  DELETE_OBJECT(state, object) {
-    const objectIndex = state.data.objects.findIndex(singleObject => singleObject._id === object._id)
-    state.data.objects.splice(objectIndex, 1)
+  DELETE_OBJECT(state, { object }) {
+    const objectIndex = state.objects.findIndex(o => o.id === object.id)
+    state.objects.splice(objectIndex, 1)
   }
 }
