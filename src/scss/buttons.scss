@@ -1,8 +1,61 @@
+.button-primary {
+  background-color: rgb(230, 230, 230);
+  border-color: rgb(225, 225, 225);
+
+  &:hover {
+    background-color: rgb(245, 245, 245);
+    background-color: rgb(240, 240, 240);
+  }
+}
+
 .button-green {
   background-color: $color-green;
   color: $color-white;
 
   &:hover {
     background-color: $color-green-light;
+  }
+}
+
+.close-button {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  height: 2rem;
+  position: relative;
+  width: 2rem;
+
+  &::before,
+  &::after {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    content: '';
+  }
+
+  &::before {
+    height: 100%;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, 0%) rotate(45deg);
+    width: 1px;
+  }
+
+  &::after {
+    height: 1px;
+    left: 0px;
+    top: 50%;
+    transform: translate(0%, -50%) rotate(45deg);
+    width: 100%;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  &:active::before,
+  &:active::after {
+    transform: rotate(55deg);
+    transition: transform $transition-standard;
   }
 }
