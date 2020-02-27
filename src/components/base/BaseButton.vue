@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :disabled="disabled" class="base-button" @onClick="onClick">
+  <button type="button" :disabled="disabled" class="base-button" @click="onClick">
     <slot></slot>
   </button>
 </template>
@@ -24,8 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 .base-button {
-  background-color: rgb(230, 230, 230);
-  border-color: rgb(225, 225, 225);
+  background-color: transparent;
+  border-color: transparent;
   display: inline-block;
   font-weight: 400;
   color: rgb(33, 37, 41);
@@ -37,12 +37,10 @@ export default {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
+  outline: 0;
   transition: color $transition-standard ease-in-out, background-color $transition-standard ease-in-out,
     border-color $transition-standard ease-in-out;
-
-  &:hover {
-    background-color: rgb(245, 245, 245);
-    background-color: rgb(240, 240, 240);
-  }
 }
+
+@import '@/scss/buttons.scss';
 </style>
