@@ -7,31 +7,10 @@ export default [
     }
   },
   {
-    path: '/objects',
-    component: () => import(/* webpackChunkName: 'object' */ '@/views/Objects'),
+    path: '/login',
+    component: () => import(/* webpackChunkName: 'login' */ '@/views/Login'),
     meta: {
-      title: 'Objects',
-      authenticationRequired: true
-    }
-  },
-  {
-    path: '/objects/:id',
-    component: () => import(/* webpackChunkName: 'object' */ '@/views/SingleObject'),
-    meta: {
-      title: 'Single object',
-      authenticationRequired: true
-    },
-    props: {
-      id: this
-    }
-  },
-
-  {
-    path: '/admin/objects',
-    component: () => import(/* webpackChunkName: 'admin/objects' */ '@/views/admin/Objects'),
-    meta: {
-      title: 'Objects',
-      adminRoleRequired: true
+      title: 'Login'
     }
   },
 
