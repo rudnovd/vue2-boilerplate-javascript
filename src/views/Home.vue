@@ -1,78 +1,162 @@
 <template>
   <UserLayout>
-    <section class="home">
+    <section class="home-page">
       <section class="technologies">
-        <div class="card">
-          <h3 class="title">Vue-router</h3>
-
-          <div class="content">
-            <span>
+        <div class="container">
+          <div class="technologies-grid">
+            <h2 class="section-title">
+              Technologies
+            </h2>
+            <Card title="Vue-router">
               <router-link to="/">
-                router-link to="/"
+                Home page
               </router-link>
-            </span>
-            <span>
-              <router-link to="/objects">
-                router-link to="objects"
+              <router-link to="*">
+                Error page
               </router-link>
-            </span>
-            <span>
-              <router-link to="/objects/1">
-                router-link to="objects/1"
+              <router-link to="/login">
+                Login page
               </router-link>
-            </span>
-          </div>
-        </div>
+            </Card>
 
-        <div class="card">
-          <h3 class="title">Vuex</h3>
-          <div class="content">
-            <a href="#" @click="showVuex('objects')">Objects</a>
-            <a href="#" @click="showVuex('user')">User</a>
-          </div>
-        </div>
+            <Card title="Vuex">
+              <a href="#vuex">Objects module</a>
+            </Card>
 
-        <div class="card">
-          <h3 class="title">SASS</h3>
-          <div class="content">
-            <span>Variables</span>
-            <span>Mixins</span>
-            <span>Placeholders</span>
+            <Card title="SCSS">
+              <span>Variables</span>
+              <span>Mixins</span>
+            </Card>
+
+            <Card title="Unit tests">
+              <span>Jest</span>
+            </Card>
+
+            <Card title="End to end tests">
+              <span>Cypress</span>
+            </Card>
+
+            <Card title="Code style rules">
+              <a href="https://vuejs.org/v2/style-guide/#Priority-A-Rules-Essential-Error-Prevention">
+                vue/essential
+              </a>
+              <a href="https://vuejs.org/v2/style-guide/#Priority-B-Rules-Strongly-Recommended-Improving-Readability">
+                vue/strongly-recommended
+              </a>
+              <a
+                href="https://vuejs.org/v2/style-guide/#Priority-C-Rules-Recommended-Minimizing-Arbitrary-Choices-and-Cognitive-Overhead"
+              >
+                vue/recommended
+              </a>
+              <a href="https://github.com/prettier/eslint-config-prettier#special-rules">
+                @vue/prettier
+              </a>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section class="technologies">
-        <div class="card">
-          <h3 class="title">Unit tests</h3>
-          <div class="content">
-            <span>Jest</span>
-          </div>
-        </div>
+      <section class="components">
+        <div class="container">
+          <div class="components-grid">
+            <h2 class="section-title">Components</h2>
+            <Card title="Button">
+              <BaseButton class="button-primary">Button</BaseButton>
+            </Card>
 
-        <div class="card">
-          <h3 class="title">End to end tests</h3>
-          <div class="content">
-            <span>Cypress</span>
-          </div>
-        </div>
+            <Card title="Spinner">
+              <BaseSpinner size="3rem" />
+            </Card>
 
-        <div class="card">
-          <h3 class="title">Eslint rules</h3>
-          <div class="content">
-            <span>
-              ['plugin:vue/essential', 'plugin:vue/strongly-recommended', 'plugin:vue/recommended', '@vue/prettier']
-            </span>
+            <Card title="Dialog">
+              <BaseButton class="button-primary" @click="showDialog = true">Show dialog</BaseButton>
+              <BaseDialog :open="showDialog" @close="showDialog = false">
+                <template #header>
+                  Header slot
+                </template>
+
+                <template #content>
+                  <p>Content slot</p>
+                </template>
+              </BaseDialog>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section v-if="showInformation" class="information">
-        <div class="card">
-          <div v-for="(info, index) in information" :key="info.id" class="object">
-            <h4>{{ index }}:</h4>
-            <span>{{ info }} </span>
-          </div>
+      <section id="vuex" class="vuex">
+        <div class="container">
+          <h2 class="section-title">Vuex</h2>
+          <h4>Objects module</h4>
+
+          <pre class="code">
+            <span>//index.js</span>
+            <code>
+              import actions from './actions'
+              import getters from './getters'
+              import mutations from './mutations'
+              import state from './state'
+
+              export default {
+                namespaced: true,
+                actions,
+                getters,
+                mutations,
+                state
+              }
+            </code>
+          </pre>
+
+          <pre class="code">
+            <span>//actions.js</span>
+            <code>
+              <span>import httpService from '@/services/httpService'</span>
+
+              export default { 
+                async getObjects({ commit, state }) {
+                  try {
+                    const response = await httpService.get('https://api.frankfurter.app/latest', { amount: 1 })
+                    const payload = {
+                      objects: response.data 
+                    }
+                    commit('SET_OBJECTS', payload)
+                    return state.objects
+                  } catch (error) {
+                    throw error 
+                  }
+                }
+              }
+            </code>
+          </pre>
+
+          <pre class="code">
+            <span>//getters.js</span>
+            <code>
+              export default {
+                objects: state => {
+                  return state.objects
+                }
+              }
+            </code>
+          </pre>
+
+          <pre class="code">
+            <span>//mutations.js</span>
+            <code>
+              SET_OBJECTS(state, { objects }) {
+                state.objects = objects
+              }
+            </code>
+          </pre>
+
+          <pre class="code">
+            <span>//state.js</span>
+            <code>
+              export default {
+                objects: []
+              }
+            </code>
+          </pre>
         </div>
       </section>
     </section>
@@ -81,12 +165,22 @@
 
 <script>
 import { mapActions } from 'vuex'
+import Card from '@/components/Card.vue'
+import BaseButton from '@/components/base/BaseButton.vue'
+import BaseSpinner from '@/components/base/BaseSpinner.vue'
+import BaseDialog from '@/components/base/BaseDialog.vue'
 
 export default {
+  name: 'Home',
+  components: {
+    Card,
+    BaseButton,
+    BaseSpinner,
+    BaseDialog
+  },
   data() {
     return {
-      showInformation: false,
-      information: {}
+      showDialog: false
     }
   },
   mounted() {
@@ -95,100 +189,51 @@ export default {
   methods: {
     ...mapActions({
       getObjects: 'objects/getObjects'
-    }),
-    showVuex(object) {
-      this.showInformation = true
-
-      if (object === 'objects') {
-        this.information = {
-          state: this.$store.state.objects.state,
-          data: this.$store.state.objects.data
-        }
-      } else if (object === 'user') {
-        this.information = {
-          state: this.$store.state.user.state,
-          data: this.$store.state.user.data
-        }
-      }
-    }
+    })
   }
 }
 </script>
 
-<style lang="scss">
-section[class='home'] {
-  grid-column-start: 1;
-  grid-column-end: 19;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  margin-top: 10px;
+<style lang="scss" scoped>
+.technologies,
+.components,
+.vuex {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 
-  section[class='technologies'] {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    min-height: 200px;
-    margin-bottom: 10px;
-  }
+.technologies {
+  background-color: rgb(250, 250, 250);
+}
 
-  section[class='information'] {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 50px;
-  }
+.components {
+  background-color: rgb(240, 240, 240);
+}
 
-  h3 {
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
+.vuex {
+  background-color: rgb(235, 235, 235);
+}
 
-  .card {
-    flex-direction: column;
-    flex: 0 1 300px;
-    min-height: 200px;
-    max-height: 200px;
-    color: #fff;
-    background-color: rgb(65, 184, 101);
-    border-color: rgb(65, 184, 101);
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+.technologies-grid,
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem 1rem;
+}
 
-    * {
-      margin-top: 5px;
-      margin-bottom: 5px;
-    }
+.section-title {
+  text-align: center;
+  margin: 0;
+  grid-column: span 3;
+}
 
-    a {
-      color: rgb(255, 255, 255);
-    }
-
-    .title {
-      border-bottom: 2px solid white;
-      padding-bottom: 5px;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-      font-size: 1.2em;
-      height: 100%;
-
-      * {
-        margin-top: 5px;
-        margin-bottom: 5px;
-      }
-    }
-  }
+.code {
+  overflow: auto;
+  background-color: rgb(246, 248, 250);
+  font-size: 0.85rem;
+  border-radius: 3px;
+  line-height: 1.8;
+  font-family: monospace;
+  margin-bottom: 1rem;
 }
 </style>
