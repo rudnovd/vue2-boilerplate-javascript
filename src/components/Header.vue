@@ -1,36 +1,27 @@
 <template>
   <header>
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/objects">Objects</router-link>
+      <router-link to="/login">Login</router-link>
+      <slot name="nav"></slot>
     </nav>
-
-    <div class="header-content">
-      Header
-    </div>
+    <slot></slot>
   </header>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 header {
-  border-bottom: 1px solid black;
-}
+  padding: 5px;
+  border-bottom: 1px solid rgb(150, 150, 150);
 
-.header-content {
-  grid-column-start: 11;
-  grid-column-end: 19;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  margin: 0;
-}
+  nav {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+  }
 
-nav {
-  grid-column-start: 1;
-  grid-column-end: 10;
-}
-
-nav a {
-  grid-column: span 1;
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
 </style>
