@@ -6,18 +6,19 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  name: 'ComponentSample',
+  components: {},
+  filters: {},
   props: {
     prop1: {
       type: String,
-      required: true,
+      required: false,
       default: ''
     },
     prop2: {
       type: Object,
       required: false,
-      default() {
-        return {}
-      }
+      default: () => {}
     }
   },
   data() {
@@ -37,7 +38,6 @@ export default {
   deactivated() {},
   beforeDestroy() {},
   destroyed() {},
-
   methods: {
     ...mapActions({})
   }
@@ -46,5 +46,6 @@ export default {
 
 <style scoped lang="scss">
 .component {
+  padding: 1rem;
 }
 </style>
