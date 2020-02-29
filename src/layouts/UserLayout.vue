@@ -3,24 +3,21 @@
     <Header />
 
     <main>
-      <transition name="fade">
+      <transition name="transition-router">
         <slot></slot>
       </transition>
     </main>
-
-    <Footer />
   </BaseLayout>
 </template>
 
 <script>
 import BaseLayout from '@/layouts/BaseLayout'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 export default {
+  name: 'UserLayout',
   components: {
     BaseLayout,
-    Footer,
     Header
   }
 }
@@ -31,13 +28,13 @@ main {
   min-height: 90vh;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 2.5s;
+.transition-router-enter-active,
+.transition-router-leave-active {
+  transition: opacity $transition-router;
 }
 
-.fade-enter-active,
-.fade-leave-active {
+.transition-router-enter-active,
+.transition-router-leave-active {
   opacity: 0;
 }
 </style>
